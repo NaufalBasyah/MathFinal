@@ -4,6 +4,10 @@ Created on Sat Jul 13 19:55:40 2019
 
 @author: Naufal Basyah
 """
+
+import sympy as sp
+import numpy as np
+
 def diff(stringEq):
     x=sp.Symbol("x")                                                       #method to turn an equation string into a lambda derrivative equation
     y=stringEq
@@ -91,9 +95,6 @@ def centralDiffApp(f1,xpoint,a,b):
         total+=g
     print (total/len(approx))
     return total/len(approx)
-        
-import sympy as sp
-import numpy as np
 
 x= sp.Symbol("x")
 f= x**2+(4*x)-12
