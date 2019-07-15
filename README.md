@@ -9,4 +9,6 @@ This repository contains the final project for our Computational Mathematics cou
 pip3 install -r requirements.txt
 ```
 
-![First Screen](img/screenshot.png)
+#### Project description
+This project covers some of the topics we discussed during the course and we provided a text based UI.
+
