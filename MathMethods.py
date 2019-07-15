@@ -77,7 +77,7 @@ def bisectionRoot(f1,a,b):
 
 def centralDiffApp(f1,xpoint,a,b):
     
-    f = eval(f1)
+    f =lambda x: eval(f1)
    
     x=xpoint
     h=[]
