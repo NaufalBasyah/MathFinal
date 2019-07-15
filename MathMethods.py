@@ -17,6 +17,7 @@ def diff(stringEq):
 
                                                             
 def rootNewton(f,xpoint):
+    x= sp.Symbol("x")
     fprim=f.diff(x)
     fprime=sp.lambdify(x,fprim)
     f=sp.lambdify(x,f)
