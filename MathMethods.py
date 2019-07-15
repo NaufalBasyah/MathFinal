@@ -5,42 +5,53 @@ Created on Sat Jul 13 19:55:40 2019
 @author: Naufal Basyah
 """
 
-import sympy as sp
+from sympy import *
 import numpy as np
 
-x=sp.Symbol("x")   
+x= Symbol("x")   
 
-def diff(stringEq):
-    x=sp.Symbol("x")                                                       #method to turn an equation string into a lambda derrivative equation
-    y=stringEq
-    yprime=y.diff(x)
-    y=sp.lambdify(x,yprime)
-    return y
+#def diff(stringEq):
+#    x= Symbol("x")                                                       #method to turn an equation string into a lambda derrivative equation
+#    y=stringEq
+#    yprime=y.diff(x)
+#    y=sp.lambdify(x,yprime)
+#    return y
 
                                                             
 def rootNewton(f,xpoint):
-    x= sp.Symbol("x")
-    fprim=f.diff(x)
-    fprime=sp.lambdify(x,fprim)
-    f=sp.lambdify(x,f)
-    x0=xpoint
+
     count=0
     
+    x = Symbol("x")
+    y = eval(f)
+    f = lambdify(x,y)
+    fprim = diff(y)
+    fprime = lambdify(x,fprim)
+    xt = xpoint
+  
     while (True):
-        x1=x0-(f(xpoint)/fprime(xpoint))
-        count+=1
-        if x1-x0<10**(-18):
-            print("The closest approximation for the root using Newton-Rhapson Mehtod is :", x1,"\nAnd it went through",count,"number of iteration(s)")
-            return x1,count
+        count += 1
+        xt = xt - (f(xt)/fprime(xt))
+        if (abs(f(xt) <= 1.0E-6)):
+            print("The closest approximation for the root using Newton-Rhapson Mehtod is :", xt,"\nAnd it went through",count,"number of iteration(s)")
+            return xt
         elif count>1000:
             return -99999,count
-        else:
-            x0=x1
+    
+#    while (True):
+#        x1=x0-(f(xpoint)/fprime(xpoint))
+#        count+=1
+#        if f(x1)-f(x0)< 1.0E-6:
+#            print("The closest approximation for the root using Newton-Rhapson Mehtod is :", x1,"\nAnd it went through",count,"number of iteration(s)")
+#            return x1,count
+#
+#        else:
+#            x0=x1
                                                                                         #methods to approximate the root(s) of a polynomial equation
 def bisectionRoot(f1,a,b):
-    x=sp.Symbol("x")
-    f=sp.lambdify(x,f1)
-    N=100
+    
+    f= lambda x : eval(f1)
+    N=1000
     if f(a)*f(b) >= 0:
         print("Bisection method fails1.")
         return None
@@ -65,8 +76,9 @@ def bisectionRoot(f1,a,b):
     return (a_n + b_n)/2
 
 def centralDiffApp(f1,xpoint,a,b):
-    x=sp.Symbol("x")
-    f=sp.lambdify(x,f1)
+    
+    f = eval(f1)
+   
     x=xpoint
     h=[]
     for i in range(a*100,b*100):
@@ -105,4 +117,7 @@ def centralDiffApp(f1,xpoint,a,b):
 # xApprox,count=rootNewton(f,4)
 # centralDiffApp(f,2,3,5)
 # bisectionRoot(f,-5,10)
+    
+
+
 
