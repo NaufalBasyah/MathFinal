@@ -108,7 +108,7 @@ def centralDiffApp(f1,xpoint,a,b):
 
     try:
         # Try catch block to check if the answer is zero
-        print("The approximates are:")
+        print("The approximates for {}:".format(f1))
         total=0
         for g in approx:
             total+=g
