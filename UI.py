@@ -1,8 +1,11 @@
 '''
 Methods to interact with program and calculate by given user input
+
+@author : Imanuel Febie, 2201835800
 '''
 from MathMethods import *
 
+run_progam = True
 
 def home_view():
     '''
@@ -11,22 +14,20 @@ def home_view():
 
     print("Choose one of following options:")
     print()
-    print("[1] Differiante")
-    print("[2] Root Newton")
-    print("[3] Bisection Root")
-    print("[4] Central Differentiation")
+    print("[1] Root Newton")
+    print("[2] Bisection Root")
+    print("[0] Exit")
 
     print("")
 
     choice = int(input("Choice: "))
 
     # Call function based on user input
-    if choice == 2:
+    if choice == 1:
         root_newton_view()
+    elif (choice == 0):
+        exit() # Stops the program
         
-
-def differantiate_view():
-    pass
 
 def root_newton_view():
     '''
@@ -35,20 +36,12 @@ def root_newton_view():
 
     print('Root finding using Newton method (input f and xpoint)')
     print("")
-    f = input("F = ")
-    xpoint = int(input("X point = "))
+    f = input("F = ") # input f
+    xpoint = int(input("X point = ")) # input x
 
     rootNewton(f, xpoint)
-
-def bisection_root_view():
-    '''
-    Ask user for f1, a and b
-    '''
     
-    print("This functions takes (f1, a, b)")
-    print()
-    
-
-home_view()
+while run_progam:
+        home_view() # call function to run the program
 
 
