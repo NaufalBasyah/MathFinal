@@ -52,7 +52,7 @@ def home_view():
 
 def root_newton_view():
     '''
-    Ask user to input f and xpoint
+    Root finding using newton method
     '''
 
     print('Root finding using Newton method (input f and xpoint)')
@@ -83,12 +83,13 @@ def central_view():
 
     print("Calculte the central difference")
     print()
-    f = input("F = ")
+
+    f = str(input("F (enter an equation): "))
     xpoint = int(input("X Point: ")) # takes equation in string form
     xu = int(input("Upper Bound: "))
     xl = int(input("Lower Bound:"))
 
-    centralDiffApp(f,xpoint,xl,xu)
+    print(centralDiffApp(f,xpoint, xu, xl))
    
 
 while run_progam:

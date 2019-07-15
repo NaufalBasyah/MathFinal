@@ -105,13 +105,21 @@ def centralDiffApp(f1,xpoint,a,b):
 #        print("%f ===== %f"%(bwd[i],f(x-h[i])),"\n")
         res= (fwd[i]-bwd[i])/(2*h[i])
         approx.append(res)
-    print("The approximates for f'(%d) are:")
-    total=0
-    for g in approx:
-        total+=g
-    print (total/len(approx))
-    return total/len(approx)
 
+    try:
+        # Try catch block to check if the answer is zero
+        print("The approximates are:")
+        total=0
+        for g in approx:
+            total+=g
+    
+        return total/len(approx)
+
+    except ZeroDivisionError:
+        print("There seems to be something wrong. Answer was ZERO")
+
+
+# centralDiffApp(f1, xpoint, a, b)
 # x= sp.Symbol("x")
 # f= x**2+(4*x)-12
 # xApprox,count=rootNewton(f,4)
