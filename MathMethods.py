@@ -8,6 +8,8 @@ Created on Sat Jul 13 19:55:40 2019
 import sympy as sp
 import numpy as np
 
+x=sp.Symbol("x")   
+
 def diff(stringEq):
     x=sp.Symbol("x")                                                       #method to turn an equation string into a lambda derrivative equation
     y=stringEq
@@ -22,6 +24,7 @@ def rootNewton(f,xpoint):
     f=sp.lambdify(x,f)
     x0=xpoint
     count=0
+    
     while (True):
         x1=x0-(f(xpoint)/fprime(xpoint))
         count+=1
@@ -96,9 +99,9 @@ def centralDiffApp(f1,xpoint,a,b):
     print (total/len(approx))
     return total/len(approx)
 
-x= sp.Symbol("x")
-f= x**2+(4*x)-12
-xApprox,count=rootNewton(f,4)
-centralDiffApp(f,2,3,5)
-bisectionRoot(f,-5,10)
+# x= sp.Symbol("x")
+# f= x**2+(4*x)-12
+# xApprox,count=rootNewton(f,4)
+# centralDiffApp(f,2,3,5)
+# bisectionRoot(f,-5,10)
 
